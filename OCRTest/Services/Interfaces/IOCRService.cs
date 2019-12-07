@@ -9,7 +9,7 @@ namespace OCRTest.Services.Interfaces
 {
     public interface IOCRService
     {
-        Task<PostOCRResponse> UploadFile(string fileName, string b64String);
+        Task<PostOCRResponse> UploadFile(string fileName, string b64String, string apiKey);
         Task<OCRResultViewModel> GetB64Text(string fileId, string fileName);
 
         Task<FileStatus> GetConversionStatus(string fileId);

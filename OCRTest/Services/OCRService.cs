@@ -19,7 +19,7 @@ namespace OCRTest.Services
             _clientFactory = clientFactory;
         }             
 
-        public async Task<PostOCRResponse> UploadFile(string fileName, string b64String)
+        public async Task<PostOCRResponse> UploadFile(string fileName, string b64String, string apiKey)
         {
             var requestBody = new PostOCRRequest()
             {
@@ -27,13 +27,14 @@ namespace OCRTest.Services
                 file = b64String,
                 filename = fileName,
                 outputformat = "txt",
+                apikey = apiKey,
                 options = new OCROption()
 
             };
 
             var requestBodyJSON = JsonConvert.SerializeObject(requestBody);
 
-            var request = new HttpRequestMessage(HttpMethod.Post, "https://api.convertio.co/convert");
+            var request = new HttpRequestMessage(HttpMethod.Post, "http://api.convertio.co/convert");
             request.Content = new StringContent(requestBodyJSON);
            
             using(var client = _clientFactory.CreateClient())

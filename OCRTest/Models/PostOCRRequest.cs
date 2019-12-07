@@ -12,14 +12,7 @@ namespace OCRTest.ViewModel
         public string file { get; set; }
         public string filename { get; set; }
         public string outputformat { get; set; }
-        public OCROption options { get; set; }
-        public PostOCRRequest()
-        {
-            //apikey = "f6f17474ddf658654083ba033b803672"; //Felipe
-            apikey = "81eabfdaa24866b0fdbe3860ede79f35"; //Pedro
-        }
-
-
+        public OCROption options { get; set; }        
     }
 
     public class OCROption

@@ -21,12 +21,13 @@ namespace OCRTest.Controllers
         }
         
         [HttpPost]
-        public IActionResult OCRResult(string fileName, string b64String)
+        public IActionResult OCRResult(string fileName, string b64String, string apiKey)
         {     
-            var uploadSuccess = _iocrService.UploadFile(fileName, b64String).Result;
+            var uploadSuccess = _iocrService.UploadFile(fileName, b64String, apiKey).Result;
 
             if (uploadSuccess != null)
-            {                
+            {
+                Thread.Sleep(20000);
                 var model = _iocrService.GetB64Text(uploadSuccess.data.id, fileName).Result;
 
                 return PartialView(model);

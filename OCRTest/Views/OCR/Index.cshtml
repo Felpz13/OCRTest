@@ -9,22 +9,32 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-6">            
-            <div class="form-group">
+        <div class="col-lg-6">
+
+            <div style="margin-bottom: 20px;">
+                <label for="keyInput">key: </label>
+                <input id="keyInput" placeholder="chave da API" />
+            </div>
+
+            <div style="margin-bottom: 20px;">
                 <label for="fileInput">Insira o bilhete</label>
                 <input type="file" class="form-control-file" id="fileInput" onchange="readURL(this)">
-            </div>
+            </div>            
+
             <div id="fileImageDiv" style="visibility:hidden;">
-                <div class="row">
+                <div>
                     <img id="fileImage" src="#" alt="User image" />
-                   
-                    <button type="button" class="btn btn-primary btn-lg " id="load" onclick="updatePartialOCRResult()" 
-                            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Aguarde...">Enviar</button>
-                </div>                    
-            </div>               
+
+                    <button type="button" class="btn btn-primary btn-lg " id="load" onclick="updatePartialOCRResult()"
+                            data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Aguarde..." style="margin-left: 20px;">
+                        Enviar
+                    </button>
+                </div>
+            </div>
         </div>
 
         <div class="col-lg-6" id="OCRResult"></div>    
+    </div>
 </div>
 
 
@@ -56,7 +66,8 @@
             type: "Post",
             data: {
                 b64String: $('#fileImage').attr('src').split(',')[1],
-                fileName: $('#fileInput').val().split('\\').pop()
+                fileName: $('#fileInput').val().split('\\').pop(),
+                apiKey: $('#keyInput').val()
             },
             success: function (response) {
                 $('#OCRResult').html(response);
