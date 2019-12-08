@@ -77,7 +77,7 @@ namespace OCRTest.Services
                 {
                     ocrResult.Name = "Falha";
                     ocrResult.Data = "";
-                    ocrResult.Token = "Arquivo corrompido ou excedido o limite Free!";
+                    ocrResult.Token = "Arquivo corrompido ou excedido o limite de uso da key!";
                 }
                 return ocrResult;
             }                

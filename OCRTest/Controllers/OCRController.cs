@@ -22,7 +22,16 @@ namespace OCRTest.Controllers
         
         [HttpPost]
         public IActionResult OCRResult(string fileName, string b64String, string apiKey)
-        {     
+        {
+            if (apiKey == string.Empty || apiKey == null)
+            {
+                return PartialView(new OCRResultViewModel() { 
+                    Name = "Falha",
+                    Data = "",
+                    Token = "obtenha uma chave em: https://developers.convertio.co/"
+                });
+            }
+
             var uploadSuccess = _iocrService.UploadFile(fileName, b64String, apiKey).Result;
 
             if (uploadSuccess != null)

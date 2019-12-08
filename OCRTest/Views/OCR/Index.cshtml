@@ -60,6 +60,7 @@
 
     function updatePartialOCRResult() {     
         $('#load').button('loading');
+        $('#OCRResult').html('<div id="loader" class="text-center"></div>');
 
         $.ajax({
             url: "OCR/OCRResult",
